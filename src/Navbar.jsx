@@ -36,7 +36,7 @@ function Navbar() {
         <div className="flex items-center gap-4 sm:gap-8 text-sm">
 
           <a
-            href="#"
+            href="https://github.com/shivampimple29/Todo"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-lg
