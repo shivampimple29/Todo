@@ -4,7 +4,6 @@ import AddTask from "./AddTask";
 import EditTask from "./EditTask";
 import DisplayTask from "./DisplayTask";
 import CompletedTask from "./CompletedTask";
-import "./Todo.css";
 
 function Todo() {
   const [todos, setTodos] = useState([
@@ -65,52 +64,98 @@ function Todo() {
   }
 
   return (
-    <div className="container">
-      <AddTask
-        newTodos={newTodos}
-        updateTask={updateTask}
-        addNewTodo={addNewTodo}
-      />
-      <hr />
-      <div>
-        <ul>
+    <div className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-black flex items-center justify-center p-4 sm:p-8 overflow-hidden">
+      {/* Responsive Glow Effects */}
+      <div
+        className="absolute w-64 h-64 sm:w-[500px] sm:h-[500px]
+                    bg-purple-600 opacity-30 blur-[120px] rounded-full
+                    top-0 left-0"
+      ></div>
+
+      <div
+        className="absolute w-56 h-56 sm:w-[400px] sm:h-[400px]
+                    bg-blue-600 opacity-30 blur-[120px] rounded-full
+                    bottom-0 right-0"
+      ></div>
+
+      {/* Glass Card */}
+      <div
+        className="relative w-full max-w-xl
+                    backdrop-blur-xl bg-white/10
+                    border border-white/20
+                    rounded-2xl sm:rounded-3xl
+                    shadow-2xl
+                    p-5 sm:p-8
+                    text-white"
+      >
+        {/* Title */}
+        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8 tracking-wide">
+          ✨ Futuristic Todo
+        </h1>
+
+        {/* Add Task */}
+        <div className="mb-6">
+          <AddTask
+            newTodos={newTodos}
+            updateTask={updateTask}
+            addNewTodo={addNewTodo}
+          />
+        </div>
+
+        {/* Active Tasks */}
+        <ul className="space-y-3 sm:space-y-4">
           {activeTodos.map((todo) => (
-            <li key={todo.id}>
+            <li
+              key={todo.id}
+              className="backdrop-blur-md bg-white/5
+                       border border-white/10
+                       rounded-xl
+                       p-4
+                       transition
+                       hover:bg-white/10
+                       duration-300"
+            >
               {editingId === todo.id ? (
                 <EditTask
                   editTask={editTask}
                   editTodo={editTodo}
                   saveEditTodo={saveEditTodo}
+                  todo={todo}
                 />
               ) : (
                 <DisplayTask
                   todo={todo}
                   toggleTodo={toggleTodo}
                   deleteTodo={deleteTodo}
-                  editTask={startEditTodo}
+                  startEditTodo={startEditTodo}
                 />
               )}
             </li>
           ))}
         </ul>
-      </div>
-      <div>
-        {completedTodos.length > 0 && (
-          <div>
-            <hr />
-            <h4>Completed Tasks</h4>
 
-            <ul>
-              {completedTodos.map((todo) => (
-                <li key={todo.id}>
-                  <CompletedTask 
-                  todo={todo} 
-                  toggleTodo={toggleTodo} 
-                  
-                  />
-                </li>
-              ))}
-            </ul>
+        {/* Completed */}
+        {completedTodos.length > 0 && (
+          <div className="mt-8">
+            <div className="border-t border-white/20 pt-6">
+              <h4 className="text-sm sm:text-base font-semibold mb-4 text-purple-300">
+                Completed Tasks
+              </h4>
+
+              <ul className="space-y-3">
+                {completedTodos.map((todo) => (
+                  <li
+                    key={todo.id}
+                    className="backdrop-blur-md bg-green-500/10
+                             border border-green-400/20
+                             rounded-xl
+                             p-4"
+                  >
+                    <CompletedTask todo={todo} toggleTodo={toggleTodo} />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>

@@ -1,14 +1,20 @@
-import './Todo.jsx';
-import Todo from './Todo.jsx';
-function App() {
-  
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import Todo from "./Todo";
 
+function App() {
   return (
-    <>
-    <h2>Todo List</h2>
-    <Todo/>
-    </>
-  )
+    <div className="min-h-screen flex flex-col
+                    bg-gradient-to-br from-indigo-900 via-purple-900 to-black">
+
+      <Navbar />
+        <Todo />
+    
+
+      <Footer />
+
+    </div>
+  );
 }
 
-export default App
+export default App;
