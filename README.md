@@ -2,6 +2,9 @@
 
 A visually modern **task management application** built using **React (Vite) and Tailwind CSS v4**, focused on glassmorphism design, smooth interactions, and responsive layout.
 
+🌐 **Live Website:**  
+👉 https://shivampimple29.github.io/Todo/
+
 ---
 
 ## 📌 Project Overview
